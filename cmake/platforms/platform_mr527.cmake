@@ -3,7 +3,7 @@
 set(MP_PLATFORM_NAME "mr527")
 
 if(NOT DEFINED MP_TOOLCHAIN_PREFIX)
-  set(MP_TOOLCHAIN_PREFIX "aarch64-linux-gnu-" CACHE STRING "交叉工具链前缀")
+    set(MP_TOOLCHAIN_PREFIX "aarch64-linux-gnu-" CACHE STRING "交叉工具链前缀")
 endif()
 
 set(CMAKE_SYSTEM_NAME Linux)

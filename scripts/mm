@@ -9,23 +9,23 @@ CLEAN=0
 RUN=0
 
 while [[ $# -gt 0 ]]; do
-  case "$1" in
-    -p|--platform) PLATFORM="$2"; shift 2 ;;
-    -j)            JOBS="$2"; shift 2 ;;
-    -j*)           JOBS="${1#-j}"; shift ;;
-    --clean)       CLEAN=1; shift ;;
-    --run)         RUN=1; shift ;;
-    -h|--help)
-      echo "usage: ./mm [-p host|mr527] [-j N] [--clean] [--run]"
-      exit 0 ;;
-    *) echo "unknown option: $1"; exit 1 ;;
-  esac
+    case "$1" in
+        -p|--platform) PLATFORM="$2"; shift 2 ;;
+        -j)            JOBS="$2"; shift 2 ;;
+        -j*)           JOBS="${1#-j}"; shift ;;
+        --clean)       CLEAN=1; shift ;;
+        --run)         RUN=1; shift ;;
+        -h|--help)
+            echo "usage: ./mm [-p host|mr527] [-j N] [--clean] [--run]"
+            exit 0 ;;
+        *) echo "unknown option: $1"; exit 1 ;;
+    esac
 done
 
 BUILD_DIR="$ROOT/build/$PLATFORM"
 if [[ $CLEAN -eq 1 ]]; then
-  echo "[mm] clean $BUILD_DIR"
-  rm -rf "$BUILD_DIR"
+    echo "[mm] clean $BUILD_DIR"
+    rm -rf "$BUILD_DIR"
 fi
 
 echo "[mm] configure platform=$PLATFORM"
@@ -37,5 +37,5 @@ cmake --build "$BUILD_DIR" -j"$JOBS"
 echo "[mm] done: $BUILD_DIR/out/bin"
 
 if [[ $RUN -eq 1 ]]; then
-  exec "$BUILD_DIR/out/bin/mpm" "$ROOT/config/default.conf"
+    exec "$BUILD_DIR/out/bin/mpm" "$ROOT/config/default.conf"
 fi
