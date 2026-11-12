@@ -1,0 +1,11 @@
+build/
+release/
+out/
+logs/
+*.log
+*.o
+*.a
+*.so
+compile_commands.json
+.cache/
+.vscode/
